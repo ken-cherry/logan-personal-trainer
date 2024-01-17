@@ -1,15 +1,29 @@
 import { useState } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { About, Error, Landing, Layout } from "./pages";
+import { About, Error, Landing, Layout, Newsletter } from "./pages";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-  },
-  {
-    path: "/about",
-    element: <About />,
+    children: [
+      {
+        index: true,
+        element: <Landing />,
+      },
+      {
+        path: "about",
+        element: <About />,
+      },
+      {
+        path: "pricing",
+        element: <h2>Pricing</h2>,
+      },
+      {
+        path: "newsletter",
+        element: <Newsletter />,
+      },
+    ],
   },
 ]);
 
